@@ -1,17 +1,24 @@
-* Overview
+/*                                                                                                                                                                                                                                                                                                 
+Section: Pivot
+Title: Pivot
+Language: en-US
+*/
+
+# Overview
 
 The Pivot whapp gives developers greater control over callflows than what comes natively in Kazoo. Pivot attempts to corral the salient data and send it, via HTTP to the developer's web server. Pivot expects a response with appropriate XML or JSON, and will execute the callflow returned on behalf of the developer.
 
-** Formats
+## Formats
 
-*** TwiML-compatible
+### TwiML-compatible
 
 XML format based on Twilio's TwiML markup.
 
-**** Core Supported
+#### Core Supported
 
 Default Request Data included:
 | Request Parameter | Kazoo Name     | Description                                                                      |
+| ----------------- | -------------- | -------------------------------------------------------------------------------- |
 | CallerName        | Caller-ID-Name | Name of the caller, if any                                                       |
 | Direction         | Direction      | Direction of the call (outbound if Kazoo originated the call, inbound otherwise) |
 | ApiVerson         | N/A            | Version string related to API changes                                            |
@@ -23,6 +30,7 @@ Default Request Data included:
 
 Optional/Conditional Request Data included:
 | Request Parameter | Kazoo Name          | Description                                           |
+| ----------------- | ------------------- | ----------------------------------------------------- |
 | RecordingUrl      | Recording-URL       | Where a recording will be sent (via HTTP PUT request) |
 | RecordingDuration | Recording-Duration  | Length of the recording, if available                 |
 | RecordingSid      | Media-Name          | Name of the recording file                            |
@@ -35,6 +43,7 @@ Other optional data includes user-defined key/value pairs stored using the <Set>
 
 TwiML Verbs
 | Verb     | Description                                              | Nestable Verbs and Nouns                                          |
+| -------- | -------------------------------------------------------- | ----------------------------------------------------------------- |
 | <Dial>   | Connect the caller to other endpoints                    | plain text DID, <Conference>, <Queue>, <Number>, <User>, <Device> |
 | <Record> | Record the caller                                        |                                                                   |
 | <Gather> | Collect DTMFs from the caller                            | <Play>, <Say>                                                     |
@@ -46,11 +55,13 @@ TwiML Verbs
 | Reject   | Reject (and don't answer - won't start billing) the call |                                                                   |
 
 Custom Verbs
-|Verb|Description|Nestable Nouns|
-|<Set>|Key value pair(s) to store along-side the call||
+| Verb  | Description | Nestable Nouns |
+| ----  | ----------- | -------------- |
+| <Set> | Key value pair(s) to store along-side the call||
 
 Core TwiML Nouns
 | Noun         | Description                                                        |
+| ------------ | ------------------------------------------------------------------ |
 | <Conference> | Conference room endpoint for <Dial>                                |
 | <Queue>      | Call queue to line callers up in                                   |
 | <Number>     | DID with extended attributes                                       |
@@ -60,6 +71,7 @@ Core TwiML Nouns
 
 Custom Nouns
 | Noun       | Description                                                                   |
+| ---------- | ----------------------------------------------------------------------------- |
 | <Variable> | Includes 'key' and 'value' attributes; values will be put subsequent requests |
 
 ** Using Pivot
